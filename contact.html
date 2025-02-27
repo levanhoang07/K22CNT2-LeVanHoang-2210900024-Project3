@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên Hệ - Gia Sư Doremi</title>
+    <link rel="stylesheet" href="contact.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <a href="index.html" class="logo">📚 Gia Sư Doremi</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="about.html">Giới thiệu</a></li>
+            <li><a href="contact.html" class="active">Liên hệ</a></li>
+            <li><a href="login.html">Đăng nhập</a></li>
+            <li><a href="register.html" class="register-btn">Đăng ký</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Phần liên hệ -->
+<section class="contact-container">
+    <h2>📞 Liên Hệ Với Chúng Tôi</h2>
+    <p>Nếu bạn có bất kỳ câu hỏi nào, đừng ngần ngại liên hệ với chúng tôi!</p>
+
+    <div class="contact-details">
+        <div class="contact-box">
+            <i class="fas fa-envelope"></i>
+            <h3>Email</h3>
+            <p>contact@levanhoanglevanhoang.com</p>
+        </div>
+        <div class="contact-box">
+            <i class="fas fa-phone"></i>
+            <h3>Hotline</h3>
+            <p>0982 121 680</p>
+        </div>
+        <div class="contact-box">
+            <i class="fas fa-map-marker-alt"></i>
+            <h3>Địa chỉ</h3>
+            <p>28A Lê Trognj Tấn, Hà Đông, Hà Nội, Việt Nam</p>
+        </div>
+    </div>
+
+    <!-- Form liên hệ -->
+    <div class="contact-form">
+        <h3>📩 Gửi Tin Nhắn</h3>
+        <form id="contactForm">
+            <input type="text" id="name" placeholder="Họ và tên" required>
+            <input type="email" id="email" placeholder="Email của bạn" required>
+            <textarea id="message" placeholder="Nhập nội dung..." required></textarea>
+            <button type="submit">Gửi ngay</button>
+        </form>
+    </div>
+
+    <!-- Bản đồ -->
+    <div class="map-container">
+        <h3>📍 Vị Trí Của Chúng Tôi</h3>
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.856726441708!2d105.81848181540262!3d21.00176899432988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135abbe4e4b4f4f%3A0x2560f6b3aef1d40!2zMTIzIE5ndXnhu4VuIFRy4bqjLCBIw6AgTuG7mWksIFZp4buHdCBOYW0!5e0!3m2!1sen!2s!4v1631892594365"
+            width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
+    </div>
+</section>
+
+<footer>
+    <p class="footer-text">© 2025 Gia SưDoremi. Mọi quyền được bảo lưu.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
