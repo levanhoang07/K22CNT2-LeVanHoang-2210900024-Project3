@@ -44,29 +44,22 @@
         font-size: 20px;
     }
 </style>
-<script>
-    function loadContent(page) {
-        document.getElementById("content-frame").src = page;
-    }
-</script>
 </head>
 <body>
     <div class="sidebar">
         <div class="header">
-            <h2>Quản Lý</h2>
-            <a href="index.jsp" class="home-button">↩</a>
+            <a href="index.jsp" class="home-button">↩</a><h2>Quản Lý</h2>
         </div>
-        <a href="LvhQuantri/quantrilist.jsp">Quản Trị</a>
-
-        <a href="#" onclick="loadContent('table2.jsp')">Bảng 2</a>
-        <a href="#" onclick="loadContent('table3.jsp')">Bảng 3</a>
-        <a href="#" onclick="loadContent('table4.jsp')">Bảng 4</a>
-        <a href="#" onclick="loadContent('table5.jsp')">Bảng 5</a>
-        <a href="#" onclick="loadContent('table6.jsp')">Bảng 6</a>
+        <a href="${pageContext.request.contextPath}/quantri_list">Quản Trị</a>
+        <a href="#" >Gia sư</a>
+        <a href="#" >Học viên</a>
+        <a href="#" >Lớp học </a>
+        <a href="#" >Thanh toán</a>
+        <a href="#" >Đánh giá</a>
     </div>
     <div class="content">
-        <a href="#" style="display: block; text-align: center; font-size: 22px; margin: 15px 0; color: #007bff; text-decoration: none; font-weight: bold;">
-    🌟 Xin chào, Admin kính mến! Chào mừng bạn đến với trang quản lý. Chúc bạn một ngày làm việc hiệu quả và thành công! 🚀
+        <a href="#" style="display: block; text-align: center; font-size: 55px; margin: 15px 0; color: #007bff; text-decoration: none; font-weight: bold;">
+    🌟 Chào mừng bạn đến với trang quản lý. Chúc bạn một ngày làm việc hiệu quả và thành công! 🚀
 </a>
         
     </div>

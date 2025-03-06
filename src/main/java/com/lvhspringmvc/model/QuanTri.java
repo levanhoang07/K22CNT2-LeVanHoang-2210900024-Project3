@@ -1,63 +1,85 @@
 package com.lvhspringmvc.model;
 
-public class QuanTri {
-    private int maQuanTri;
-    private String hoTen;
-    private String tenDangNhap;
-    private String matKhau;
-    private String email;
-    private String soDienThoai;
+import java.io.Serializable;
+
+public class QuanTri implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    private int lvhMaQuanTri;
+    private String lvhHoTen;
+    private String lvhTenDangNhap;
+    private String lvhMatKhau;
+    private String lvhEmail;
+    private String lvhSoDienThoai;
 
     public QuanTri() {}
 
-    public QuanTri(int maQuanTri, String hoTen, String tenDangNhap, String matKhau, String email, String soDienThoai) {
-        this.maQuanTri = maQuanTri;
-        this.hoTen = hoTen;
-        this.tenDangNhap = tenDangNhap;
-        this.matKhau = matKhau;
-        this.email = email;
-        this.soDienThoai = soDienThoai;
+    public QuanTri(int lvhMaQuanTri, String lvhHoTen, String lvhTenDangNhap, String lvhMatKhau, String lvhEmail, String lvhSoDienThoai) {
+        this.lvhMaQuanTri = lvhMaQuanTri;
+        this.lvhHoTen = lvhHoTen;
+        this.lvhTenDangNhap = lvhTenDangNhap;
+        this.lvhMatKhau = lvhMatKhau;
+        this.lvhEmail = lvhEmail;
+        this.lvhSoDienThoai = lvhSoDienThoai;
     }
 
     // Getter & Setter
-    public int getMaQuanTri() {
-        return maQuanTri;
+    public int getLvhMaQuanTri() {
+        return lvhMaQuanTri;
     }
 
-    public void setMaQuanTri(int maQuanTri) {
-        this.maQuanTri = maQuanTri;
+    public void setLvhMaQuanTri(int lvhMaQuanTri) {
+        this.lvhMaQuanTri = lvhMaQuanTri;
     }
 
-    public String getHoTen() {
-        return hoTen;
+    public String getLvhHoTen() {
+        return lvhHoTen;
     }
 
-    public void setHoTen(String hoTen) {
-        this.hoTen = hoTen;
+    public void setLvhHoTen(String lvhHoTen) {
+        this.lvhHoTen = lvhHoTen;
     }
 
-    public String getEmail() {
-        return email;
+    public String getLvhTenDangNhap() {
+        return lvhTenDangNhap;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setLvhTenDangNhap(String lvhTenDangNhap) {
+        this.lvhTenDangNhap = lvhTenDangNhap;
     }
 
-	public String getTenDangNhap() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public String getLvhMatKhau() {
+        return lvhMatKhau;
+    }
 
-	public String getMatKhau() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public void setLvhMatKhau(String lvhMatKhau) {
+        this.lvhMatKhau = lvhMatKhau;
+    }
 
-	public String getSoDienThoai() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public String getLvhEmail() {
+        return lvhEmail;
+    }
 
-	
+    public void setLvhEmail(String lvhEmail) {
+        this.lvhEmail = lvhEmail;
+    }
+
+    public String getLvhSoDienThoai() {
+        return lvhSoDienThoai;
+    }
+
+    public void setLvhSoDienThoai(String lvhSoDienThoai) {
+        this.lvhSoDienThoai = lvhSoDienThoai;
+    }
+
+    @Override
+    public String toString() {
+        return "QuanTri{" +
+                "lvhMaQuanTri=" + lvhMaQuanTri +
+                ", lvhHoTen='" + lvhHoTen + '\'' +
+                ", lvhTenDangNhap='" + lvhTenDangNhap + '\'' +
+                ", lvhEmail='" + lvhEmail + '\'' +
+                ", lvhSoDienThoai='" + lvhSoDienThoai + '\'' +
+                '}';
+    }
 }

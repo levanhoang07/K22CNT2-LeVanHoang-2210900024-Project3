@@ -2,7 +2,9 @@ package com.lvhspringmvc.controllers;
 
 import com.lvhspringmvc.dao.QuantriDAO;
 import com.lvhspringmvc.model.QuanTri;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,50 +13,59 @@ import java.util.List;
 @RequestMapping("/quantri")
 public class QuantriController {
 
+    private final QuantriDAO quantriDAO;
+
     @Autowired
-    private QuantriDAO quantriDAO; // Đổi tên QuanTriDAO thành QuantriDAO
+    public QuantriController(QuantriDAO quantriDAO) {
+        this.quantriDAO = quantriDAO;
+    }
 
     // Hiển thị danh sách quản trị viên
     @GetMapping("/list")
-    public String listQuanTri(Model model) {
+    public String showQuanTriList(Model model) {
         List<QuanTri> list = quantriDAO.getAllQuanTri();
-        model.addAttribute("danhSachQuanTri", list);
-        return "LvhQuantri/quantri_list";
+        model.addAttribute("list", list);
+        return "quantri_list"; // Trả về quantri_list.jsp
     }
 
     // Hiển thị form thêm quản trị viên
-    @GetMapping("/saveform")
-    public String showForm(Model model) {
-        model.addAttribute("command", new QuanTri());
-        return "LvhQuantri/quantri_form";
+    @GetMapping("/add")
+    public String showAddForm(Model model) {
+        model.addAttribute("quanTri", new QuanTri());
+        return "quantri_form"; // Trả về quantri_form.jsp
     }
 
-    // Lưu thông tin quản trị viên
+    // Lưu thông tin quản trị viên mới
     @PostMapping("/save")
-    public String save(@ModelAttribute("command") QuanTri quanTri) {
-        quantriDAO.save(quanTri);
+    public String saveQuanTri(@ModelAttribute("quanTri") QuanTri quanTri) {
+        quantriDAO.insertQuanTri(quanTri);
         return "redirect:/quantri/list";
     }
 
-    // Hiển thị form sửa thông tin quản trị viên
+    // Hiển thị form chỉnh sửa quản trị viên
     @GetMapping("/edit/{id}")
-    public String edit(@PathVariable("id") int id, Model model) {
+    public String showEditForm(@PathVariable("id") int id, Model model) {
         QuanTri quanTri = quantriDAO.getQuanTriById(id);
-        model.addAttribute("command", quanTri);
-        return "LvhQuantri/quantri_edit";
+        if (quanTri == null) {
+            return "redirect:/quantri/list"; // Nếu không tìm thấy, quay lại danh sách
+        }
+        model.addAttribute("quanTri", quanTri);
+        return "quantri_form"; // Sử dụng lại cùng 1 form để tránh trùng lặp
     }
 
-    // Lưu thông tin sau khi chỉnh sửa
-    @PostMapping("/editsave")
-    public String editSave(@ModelAttribute("command") QuanTri quanTri) {
-        quantriDAO.update(quanTri);
+    // Cập nhật thông tin quản trị viên
+    @PostMapping("/update")
+    public String updateQuanTri(@ModelAttribute("quanTri") QuanTri quanTri) {
+        if (quantriDAO.getQuanTriById(quanTri.getLvhMaQuanTri()) != null) {
+            quantriDAO.updateQuanTri(quanTri);
+        }
         return "redirect:/quantri/list";
     }
 
     // Xóa quản trị viên
     @GetMapping("/delete/{id}")
-    public String delete(@PathVariable("id") int id) {
-        quantriDAO.delete(id);
+    public String deleteQuanTri(@PathVariable("id") int id) {
+        quantriDAO.deleteQuanTri(id);
         return "redirect:/quantri/list";
     }
 }

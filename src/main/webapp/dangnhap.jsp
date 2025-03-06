@@ -122,12 +122,14 @@
             <input type="password" id="password" name="password" placeholder="Nhập mật khẩu" required>
             
             <button type="submit">Đăng nhập</button>
+            <h4>Bạn chưa có tài khoản, hãy  <a href="dangky.jsp">đăng ký</a> ngay !</h4>
         </form>
     </section>
     
     <footer>
         <p>© 2025 Trung tâm Gia sư Doremi.</p>
         <p>Liên hệ: Hotline: 0982121680 | Email: lvhProject3@doremi.edu.vn | Địa chỉ: 28A Lê Trọng Tấn, Hà Đông, Hà Nội</p>
+        <p>Theo dõi chúng tôi: <a href="https://www.facebook.com/people/Le-V-Hoang/pfbid0UcDPb8dS3FYzihsBB55FRGMHajBs4LH9MJvPg8LqveAzUBC58crhdsmauoQL1PJDl/" style="color: #50e3c2;">Facebook</a> | <a href="https://www.instagram.com/lev._hoang07?igsh=YnM3ajkyMjZoNHo0&utm_source=qr" style="color: #50e3c2;">Instagram</a> | <a href="#" style="color: #50e3c2;">YouTube</a></p>
     </footer>
 </body>
 </html>
