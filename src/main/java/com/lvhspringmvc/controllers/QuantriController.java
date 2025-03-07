@@ -50,15 +50,13 @@ public class QuantriController {
             return "redirect:/quantri/list"; // Nếu không tìm thấy, quay lại danh sách
         }
         model.addAttribute("quanTri", quanTri);
-        return "quantri_form"; // Sử dụng lại cùng 1 form để tránh trùng lặp
+        return "quantri_form"; // Sử dụng lại cùng 1 form
     }
 
     // Cập nhật thông tin quản trị viên
     @PostMapping("/update")
     public String updateQuanTri(@ModelAttribute("quanTri") QuanTri quanTri) {
-        if (quantriDAO.getQuanTriById(quanTri.getLvhMaQuanTri()) != null) {
-            quantriDAO.updateQuanTri(quanTri);
-        }
+        quantriDAO.updateQuanTri(quanTri);
         return "redirect:/quantri/list";
     }
 

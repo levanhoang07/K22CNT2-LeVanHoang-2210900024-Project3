@@ -1,20 +1,19 @@
 package com.lvhspringmvc.model;
 
-import java.io.Serializable;
-
-public class QuanTri implements Serializable {
-    private static final long serialVersionUID = 1L;
-
-    private int lvhMaQuanTri;
+public class QuanTri {
+    private Integer lvhMaQuanTri;
     private String lvhHoTen;
     private String lvhTenDangNhap;
     private String lvhMatKhau;
     private String lvhEmail;
     private String lvhSoDienThoai;
 
-    public QuanTri() {}
+    // Constructor mặc định
+    public QuanTri() {
+    }
 
-    public QuanTri(int lvhMaQuanTri, String lvhHoTen, String lvhTenDangNhap, String lvhMatKhau, String lvhEmail, String lvhSoDienThoai) {
+    // Constructor có tham số
+    public QuanTri(Integer lvhMaQuanTri, String lvhHoTen, String lvhTenDangNhap, String lvhMatKhau, String lvhEmail, String lvhSoDienThoai) {
         this.lvhMaQuanTri = lvhMaQuanTri;
         this.lvhHoTen = lvhHoTen;
         this.lvhTenDangNhap = lvhTenDangNhap;
@@ -23,12 +22,12 @@ public class QuanTri implements Serializable {
         this.lvhSoDienThoai = lvhSoDienThoai;
     }
 
-    // Getter & Setter
-    public int getLvhMaQuanTri() {
+    // Getter và Setter đầy đủ
+    public Integer getLvhMaQuanTri() {
         return lvhMaQuanTri;
     }
 
-    public void setLvhMaQuanTri(int lvhMaQuanTri) {
+    public void setLvhMaQuanTri(Integer lvhMaQuanTri) {
         this.lvhMaQuanTri = lvhMaQuanTri;
     }
 
@@ -78,6 +77,7 @@ public class QuanTri implements Serializable {
                 "lvhMaQuanTri=" + lvhMaQuanTri +
                 ", lvhHoTen='" + lvhHoTen + '\'' +
                 ", lvhTenDangNhap='" + lvhTenDangNhap + '\'' +
+                ", lvhMatKhau='" + lvhMatKhau + '\'' +
                 ", lvhEmail='" + lvhEmail + '\'' +
                 ", lvhSoDienThoai='" + lvhSoDienThoai + '\'' +
                 '}';
