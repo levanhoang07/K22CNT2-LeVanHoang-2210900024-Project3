@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Form học viên</title>
 </head>
 <body>
 <form action="${pageContext.request.contextPath}/hocvien/save" method="post">
