@@ -1,6 +1,6 @@
 package com.lvhspringmvc.model;
 
-public class QuanTri {
+public class LVH_QuanTri {
     private Integer lvhMaQuanTri;
     private String lvhHoTen;
     private String lvhTenDangNhap;
@@ -8,21 +8,7 @@ public class QuanTri {
     private String lvhEmail;
     private String lvhSoDienThoai;
 
-    // Constructor mặc định
-    public QuanTri() {
-    }
-
-    // Constructor có tham số
-    public QuanTri(Integer lvhMaQuanTri, String lvhHoTen, String lvhTenDangNhap, String lvhMatKhau, String lvhEmail, String lvhSoDienThoai) {
-        this.lvhMaQuanTri = lvhMaQuanTri;
-        this.lvhHoTen = lvhHoTen;
-        this.lvhTenDangNhap = lvhTenDangNhap;
-        this.lvhMatKhau = lvhMatKhau;
-        this.lvhEmail = lvhEmail;
-        this.lvhSoDienThoai = lvhSoDienThoai;
-    }
-
-    // Getter và Setter đầy đủ
+    // Getters and Setters
     public Integer getLvhMaQuanTri() {
         return lvhMaQuanTri;
     }
@@ -69,17 +55,5 @@ public class QuanTri {
 
     public void setLvhSoDienThoai(String lvhSoDienThoai) {
         this.lvhSoDienThoai = lvhSoDienThoai;
-    }
-
-    @Override
-    public String toString() {
-        return "QuanTri{" +
-                "lvhMaQuanTri=" + lvhMaQuanTri +
-                ", lvhHoTen='" + lvhHoTen + '\'' +
-                ", lvhTenDangNhap='" + lvhTenDangNhap + '\'' +
-                ", lvhMatKhau='" + lvhMatKhau + '\'' +
-                ", lvhEmail='" + lvhEmail + '\'' +
-                ", lvhSoDienThoai='" + lvhSoDienThoai + '\'' +
-                '}';
     }
 }

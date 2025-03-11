@@ -50,12 +50,12 @@
         <div class="header">
             <a href="index.jsp" class="home-button">↩</a><h2>Quản Lý</h2>
         </div>
-        <a href="${pageContext.request.contextPath}/quantri_list">Quản Trị</a>
-        <a href="#" >Gia sư</a>
-        <a href="#" >Học viên</a>
-        <a href="#" >Lớp học </a>
-        <a href="#" >Thanh toán</a>
-        <a href="#" >Đánh giá</a>
+        <a href="${pageContext.request.contextPath}/lvh_quantri_list">Quản Trị</a>
+        <a href="lvh_giasu_list" >Gia sư</a>
+        <a href="${pageContext.request.contextPath}/lvh_hocvien_list" >Học viên</a>
+        <a href="${pageContext.request.contextPath}/lvh_lophoc_list" >Lớp học </a>
+        <a href="lvh_thanhtoan_list" >Thanh toán</a>
+        <a href="lvh_danhgia_list" >Đánh giá</a>
     </div>
     <div class="content">
         <a href="#" style="display: block; text-align: center; font-size: 55px; margin: 15px 0; color: #007bff; text-decoration: none; font-weight: bold;">
