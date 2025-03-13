@@ -16,7 +16,7 @@
     <!-- Cấu hình Annotation-driven cho Spring MVC -->
     <mvc:annotation-driven/>
 
-    <!-- Cấu hình View Resolver cho JSP -->
+    <!-- Cấu hình InternalResourceViewResolver để xử lý các JSP view -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/"/>
         <property name="suffix" value=".jsp"/>
@@ -35,29 +35,29 @@
         <constructor-arg ref="dataSource"/>
     </bean>
 
-    <!-- Cấu hình DAO cho quản trị viên (LVH_QuantriDAO) -->
+    <!-- DAO Beans -->
     <bean id="LVH_QuantriDAO" class="com.lvhspringmvc.dao.LVH_QuantriDAO">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
 
-	<bean id="LVH_GiasuDAO" class="com.lvhspringmvc.dao.LVH_GiasuDAO">
+    <bean id="LVH_GiasuDAO" class="com.lvhspringmvc.dao.LVH_GiasuDAO">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
-    
-    <bean id="LVH_HovienDAO" class="com.lvhspringmvc.dao.LVH_HovienDAO">
+
+    <bean id="LVH_HocvienDAO" class="com.lvhspringmvc.dao.LVH_HocvienDAO">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
-    
+
     <bean id="LVH_LophocDAO" class="com.lvhspringmvc.dao.LVH_LophocDAO">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
-    
+
     <bean id="LVH_ThanhtoanDAO" class="com.lvhspringmvc.dao.LVH_ThanhtoanDAO">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
-    
+
     <bean id="LVH_DanhgiaDAO" class="com.lvhspringmvc.dao.LVH_DanhgiaDAO">
-        <property name="jdbcTemplate" ref="jdbcTemplate"/>
-    </bean>
+    <constructor-arg ref="jdbcTemplate"/>
+</bean>
 
 </beans>

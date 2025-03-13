@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns="http://java.sun.com/xml/ns/javaee"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
-        http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-    version="3.0"
-    metadata-complete="true">
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                             http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
 
     <display-name>SpringMVC</display-name>
 
@@ -12,17 +11,28 @@
     <servlet>
         <servlet-name>dispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <!-- Tham chiếu đến tệp cấu hình Spring MVC -->
         <init-param>
             <param-name>contextConfigLocation</param-name>
             <param-value>/WEB-INF/spring-servlet.xml</param-value>
         </init-param>
+        <!-- Cấu hình để DispatcherServlet khởi tạo khi ứng dụng bắt đầu -->
         <load-on-startup>1</load-on-startup>
     </servlet>
 
-    <!-- Cấu hình mapping cho DispatcherServlet -->
+    <!-- Cấu hình servlet-mapping cho DispatcherServlet -->
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
+        <!-- Ánh xạ tất cả các yêu cầu đến DispatcherServlet -->
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
+    <!-- Cấu hình Welcome File để hiển thị trang chủ khi truy cập root -->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!-- Thêm các cấu hình khác nếu cần thiết cho ứng dụng -->
+    <!-- Ví dụ như filter, listener, etc. -->
 
 </web-app>

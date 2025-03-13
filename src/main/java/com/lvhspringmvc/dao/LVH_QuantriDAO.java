@@ -1,45 +1,58 @@
 package com.lvhspringmvc.dao;
 
-import com.lvhspringmvc.model.LVH_QuanTri;
+import com.lvhspringmvc.model.LVH_Quantri;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
 @Repository
 public class LVH_QuantriDAO {
-    private final JdbcTemplate jdbcTemplate;
+    private JdbcTemplate jdbcTemplate;
 
-    @Autowired
-    public LVH_QuantriDAO(JdbcTemplate jdbcTemplate) {
+    // Setter hợp lệ cho jdbcTemplate
+    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    // Getter cho jdbcTemplate
+    public JdbcTemplate getJdbcTemplate() {
+        return jdbcTemplate;
+    }
+
     // Lấy tất cả quản trị viên
-    public List<LVH_QuanTri> getAllQuanTri() {
+    public List<LVH_Quantri> getAllQuanTri() {
         String sql = "SELECT * FROM LvhQuanTri";
         return jdbcTemplate.query(sql, new QuanTriMapper());
     }
 
     // Lấy quản trị viên theo ID
-    public LVH_QuanTri getQuanTriById(int id) {
+    public LVH_Quantri getQuanTriById(int id) {
         String sql = "SELECT * FROM LvhQuanTri WHERE LvhMaQuanTri = ?";
-        return jdbcTemplate.queryForObject(sql, new QuanTriMapper(), id);
+        try {
+            return jdbcTemplate.queryForObject(sql, new QuanTriMapper(), id);
+        } catch (Exception e) {
+            return null; // Không tìm thấy quản trị viên với ID này
+        }
     }
 
     // Thêm quản trị viên
-    public int insertQuanTri(LVH_QuanTri quanTri) {
+    public int insertQuanTri(LVH_Quantri quanTri) {
+        if (quanTri == null || quanTri.getLvhHoTen() == null || quanTri.getLvhTenDangNhap() == null) {
+            throw new IllegalArgumentException("Tên quản trị viên và tên đăng nhập không thể để trống");
+        }
         String sql = "INSERT INTO LvhQuanTri (LvhHoTen, LvhTenDangNhap, LvhMatKhau, LvhEmail, LvhSoDienThoai) VALUES (?, ?, ?, ?, ?)";
         return jdbcTemplate.update(sql, quanTri.getLvhHoTen(), quanTri.getLvhTenDangNhap(), 
                                    quanTri.getLvhMatKhau(), quanTri.getLvhEmail(), quanTri.getLvhSoDienThoai());
     }
 
     // Cập nhật quản trị viên
-    public int updateQuanTri(LVH_QuanTri quanTri) {
+    public int updateQuanTri(LVH_Quantri quanTri) {
+        if (quanTri == null || quanTri.getLvhMaQuanTri() <= 0) {
+            throw new IllegalArgumentException("ID của quản trị viên không hợp lệ");
+        }
         String sql = "UPDATE LvhQuanTri SET LvhHoTen = ?, LvhTenDangNhap = ?, LvhMatKhau = ?, LvhEmail = ?, LvhSoDienThoai = ? WHERE LvhMaQuanTri = ?";
         return jdbcTemplate.update(sql, quanTri.getLvhHoTen(), quanTri.getLvhTenDangNhap(), 
                                    quanTri.getLvhMatKhau(), quanTri.getLvhEmail(), quanTri.getLvhSoDienThoai(), 
@@ -53,10 +66,10 @@ public class LVH_QuantriDAO {
     }
 
     // RowMapper để ánh xạ ResultSet thành đối tượng LVH_QuanTri
-    private static class QuanTriMapper implements RowMapper<LVH_QuanTri> {
+    private static class QuanTriMapper implements RowMapper<LVH_Quantri> {
         @Override
-        public LVH_QuanTri mapRow(ResultSet rs, int rowNum) throws SQLException {
-            LVH_QuanTri quanTri = new LVH_QuanTri();
+        public LVH_Quantri mapRow(ResultSet rs, int rowNum) throws SQLException {
+            LVH_Quantri quanTri = new LVH_Quantri();
             quanTri.setLvhMaQuanTri(rs.getInt("LvhMaQuanTri"));
             quanTri.setLvhHoTen(rs.getString("LvhHoTen"));
             quanTri.setLvhTenDangNhap(rs.getString("LvhTenDangNhap"));

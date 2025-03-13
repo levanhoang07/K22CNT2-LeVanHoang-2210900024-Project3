@@ -12,10 +12,16 @@ import java.util.List;
 @Repository
 public class LVH_DanhgiaDAO {
 
-    private JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
-    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+    // Constructor Injection
+    public LVH_DanhgiaDAO(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
+    }
+
+    // Getter cho jdbcTemplate
+    public JdbcTemplate getJdbcTemplate() {
+        return jdbcTemplate;
     }
 
     // Lấy danh sách đánh giá

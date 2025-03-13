@@ -11,12 +11,12 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/lophoc")
-public class LVH_LopHocController {
+public class LVH_LophocController {
 
     private final LVH_LophocDAO lopHocDAO;
 
     @Autowired
-    public LVH_LopHocController(LVH_LophocDAO lopHocDAO) {
+    public LVH_LophocController(LVH_LophocDAO lopHocDAO) {
         this.lopHocDAO = lopHocDAO;
     }
 

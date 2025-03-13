@@ -1,7 +1,7 @@
 package com.lvhspringmvc.controllers;
 
 import com.lvhspringmvc.dao.LVH_QuantriDAO;
-import com.lvhspringmvc.model.LVH_QuanTri;
+import com.lvhspringmvc.model.LVH_Quantri;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,56 +20,65 @@ public class LVH_QuantriController {
         this.quantriDAO = quantriDAO;
     }
 
-    // Hiển thị danh sách quản trị viên
+    // Ánh xạ cho trang quản lý
+    @RequestMapping("/qladmin")
+    public String showAdminPage() {
+        return "qladmin"; // Trả về view qladmin.jsp
+    }
+
     @GetMapping("/list")
     public String showQuanTriList(Model model) {
-        List<LVH_QuanTri> list = quantriDAO.getAllQuanTri();
+        List<LVH_Quantri> list = quantriDAO.getAllQuanTri();
         model.addAttribute("list", list);
-        return "lvh_quantri_list"; // Trả về trang danh sách quản trị viên
+        return "lvh_quantri_list"; // Trả về danh sách
     }
 
-    // Hiển thị form thêm mới quản trị viên
     @GetMapping("/add")
     public String showAddForm(Model model) {
-        model.addAttribute("quanTri", new LVH_QuanTri());
-        return "lvh_quantri_form"; // Trả về form thêm/sửa quản trị viên
+        model.addAttribute("quanTri", new LVH_Quantri());
+        return "lvh_quantri_form"; // Form để thêm mới
     }
 
-    // Lưu thông tin quản trị viên mới
     @PostMapping("/save")
-    public String saveQuanTri(@ModelAttribute("quanTri") LVH_QuanTri quanTri) {
-        if (quanTri != null) {
-            quantriDAO.insertQuanTri(quanTri);
+    public String saveQuanTri(@ModelAttribute("quanTri") LVH_Quantri quanTri, Model model) {
+        try {
+            if (quanTri != null) {
+                quantriDAO.insertQuanTri(quanTri);
+            }
+        } catch (IllegalArgumentException e) {
+            model.addAttribute("message", e.getMessage());
+            return "lvh_quantri_form";
         }
         return "redirect:/quantri/list";
     }
 
-    // Hiển thị form chỉnh sửa quản trị viên
     @GetMapping("/edit/{id}")
     public String showEditForm(@PathVariable("id") int id, Model model) {
-        LVH_QuanTri quanTri = quantriDAO.getQuanTriById(id);
+        LVH_Quantri quanTri = quantriDAO.getQuanTriById(id);
         if (quanTri == null) {
             model.addAttribute("message", "Không tìm thấy quản trị viên với ID: " + id);
-            return "lvh_quantri_list"; // Quay lại danh sách và hiển thị thông báo
+            return "redirect:/quantri/list";
         }
         model.addAttribute("quanTri", quanTri);
-        return "lvh_quantri_form"; // Sử dụng lại cùng 1 form để sửa
+        return "lvh_quantri_form"; // Sử dụng lại form để chỉnh sửa
     }
 
-    // Cập nhật thông tin quản trị viên
     @PostMapping("/update")
-    public String updateQuanTri(@ModelAttribute("quanTri") LVH_QuanTri quanTri) {
-        if (quanTri != null && quanTri.getLvhMaQuanTri() != null) {
-            quantriDAO.updateQuanTri(quanTri);
+    public String updateQuanTri(@ModelAttribute("quanTri") LVH_Quantri quanTri, Model model) {
+        try {
+            if (quanTri != null && quanTri.getLvhMaQuanTri() > 0) {
+                quantriDAO.updateQuanTri(quanTri);
+            }
+        } catch (IllegalArgumentException e) {
+            model.addAttribute("message", e.getMessage());
+            return "lvh_quantri_form";
         }
         return "redirect:/quantri/list";
     }
 
-    // Xóa quản trị viên
     @GetMapping("/delete/{id}")
     public String deleteQuanTri(@PathVariable("id") int id) {
-        // Kiểm tra nếu quản trị viên tồn tại trước khi xóa
-        LVH_QuanTri quanTri = quantriDAO.getQuanTriById(id);
+        LVH_Quantri quanTri = quantriDAO.getQuanTriById(id);
         if (quanTri != null) {
             quantriDAO.deleteQuanTri(id);
         }

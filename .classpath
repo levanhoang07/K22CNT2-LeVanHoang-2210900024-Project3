@@ -48,7 +48,7 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/webprj3/spring-web-5.3.0.jar">
+	<classpathentry kind="lib" path="C:/Users/FPTSHOP/Downloads/spring-web-5.3.32.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
@@ -60,6 +60,16 @@
 			<attribute name="maven.groupId" value="org.springframework"/>
 			<attribute name="maven.artifactId" value="spring-web"/>
 			<attribute name="maven.version" value="5.1.1.RELEASE"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/FPTSHOP/.m2/repository/org/springframework/spring-web/5.3.32/spring-web-5.3.32.jar" sourcepath="C:/Users/FPTSHOP/.m2/repository/org/springframework/spring-web/5.3.32/spring-web-5.3.32-sources.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="org.eclipse.jst.component.archivename" value="spring-web-5.3.32.jar"/>
+			<attribute name="maven.groupId" value="org.springframework"/>
+			<attribute name="maven.artifactId" value="spring-web"/>
+			<attribute name="maven.version" value="5.3.32"/>
 			<attribute name="maven.scope" value="compile"/>
 		</attributes>
 	</classpathentry>

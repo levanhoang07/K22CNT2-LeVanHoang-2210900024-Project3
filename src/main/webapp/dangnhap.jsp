@@ -114,7 +114,7 @@
     </header>
     
     <section>
-        <form action="loginProcess.jsp" method="POST">
+        <form action="#" method="POST">
             <label for="username">Số điện thoại:</label>
             <input type="text" id="username" name="username" placeholder="Nhập số điện thoại của bạn" required>
             

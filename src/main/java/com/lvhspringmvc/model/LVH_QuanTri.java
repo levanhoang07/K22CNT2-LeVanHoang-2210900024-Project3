@@ -1,19 +1,19 @@
 package com.lvhspringmvc.model;
 
-public class LVH_QuanTri {
-    private Integer lvhMaQuanTri;
+public class LVH_Quantri {
+    private int lvhMaQuanTri;
     private String lvhHoTen;
     private String lvhTenDangNhap;
     private String lvhMatKhau;
     private String lvhEmail;
     private String lvhSoDienThoai;
 
-    // Getters and Setters
-    public Integer getLvhMaQuanTri() {
+    // Getter và Setter
+    public int getLvhMaQuanTri() {
         return lvhMaQuanTri;
     }
 
-    public void setLvhMaQuanTri(Integer lvhMaQuanTri) {
+    public void setLvhMaQuanTri(int lvhMaQuanTri) {
         this.lvhMaQuanTri = lvhMaQuanTri;
     }
 

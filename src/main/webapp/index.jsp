@@ -152,6 +152,7 @@
         </form>
         <p style="margin-top: 15px; color: #666;">Hàng trăm gia sư chất lượng đang chờ đón bạn!</p>
     </section>
+    
 
     <section class="intro-section">
         <h2>Giới thiệu về Trung tâm Gia sư Doremi</h2>
@@ -182,7 +183,7 @@
                 Khi trở thành gia sư tại Doremi, bạn sẽ được hưởng nhiều lợi ích tuyệt vời: linh hoạt về thời gian giảng dạy, mức thu nhập hấp dẫn dựa trên năng lực, cơ hội phát triển kỹ năng sư phạm, và sự hỗ trợ tận tình từ đội ngũ quản lý của trung tâm. Chúng tôi cung cấp các buổi đào tạo định kỳ để giúp bạn nâng cao kỹ năng giảng dạy, cách tiếp cận học sinh, và xây dựng bài giảng hiệu quả.
             </p>
             <p style="text-align: center;">
-                <a href="dangky_giasu.jsp" class="register-button">Đăng ký làm gia sư ngay</a>
+                <a href="lvh_giasu_form.jsp" class="register-button">Đăng ký làm gia sư ngay</a>
             </p>
         </div>
 
@@ -195,7 +196,7 @@
                 Khi đăng ký học tại Doremi, bạn sẽ được làm việc 1-1 với gia sư phù hợp nhất dựa trên môn học, trình độ và mục tiêu cá nhân của bạn. Chúng tôi cam kết mang đến trải nghiệm học tập thú vị, không áp lực, giúp bạn tự tin nắm vững kiến thức và đạt được thành tích cao nhất.
             </p>
             <p style="text-align: center;">
-                <a href="dangky_hoc.jsp" class="register-button">Đăng ký học ngay</a>
+                <a href="lvh_hocvien_form.jsp" class="register-button">Đăng ký học ngay</a>
             </p>
             
         </div>
