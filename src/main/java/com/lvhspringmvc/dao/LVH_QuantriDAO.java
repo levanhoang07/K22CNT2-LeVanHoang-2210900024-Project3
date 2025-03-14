@@ -26,6 +26,7 @@ public class LVH_QuantriDAO {
     public List<LVH_Quantri> getAllQuanTri() {
         String sql = "SELECT * FROM LvhQuanTri";
         return jdbcTemplate.query(sql, new QuanTriMapper());
+        
     }
 
     // Lấy quản trị viên theo ID

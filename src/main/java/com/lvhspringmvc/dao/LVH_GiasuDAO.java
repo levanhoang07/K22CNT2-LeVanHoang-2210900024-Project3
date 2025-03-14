@@ -12,6 +12,7 @@ import java.util.List;
 
 @Repository
 public class LVH_GiasuDAO {
+
     private JdbcTemplate jdbcTemplate;
 
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
@@ -34,13 +35,25 @@ public class LVH_GiasuDAO {
         try {
             return jdbcTemplate.queryForObject(sql, new GiasuMapper(), id);
         } catch (EmptyResultDataAccessException e) {
-            return null;
+            return null;  // Nếu không có gia sư với ID này
         }
     }
 
     // Thêm mới gia sư
     public int insertGiasu(LVH_Giasu giasu) {
-        String sql = "INSERT INTO LvhGiaSu (LvhHoTen, LvhNgaySinh, LvhGioiTinh, LvhSoDienThoai, LvhEmail, LvhDiaChi, LvhTrinhDo, LvhAnh, LvhMucLuong, LvhMatKhau, LvhTrangThai) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        if (giasu.getLvhHoTen() == null || giasu.getLvhHoTen().isEmpty()) {
+            throw new IllegalArgumentException("Tên gia sư không thể để trống.");
+        }
+        if (giasu.getLvhSoDienThoai() == null || giasu.getLvhEmail() == null) {
+            throw new IllegalArgumentException("Số điện thoại và Email không thể để trống.");
+        }
+
+        // Chuyển đổi trạng thái thành 0 (Inactive) hoặc 1 (Active)
+        int trangThai = giasu.getLvhTrangThai() ? 1 : 0;
+
+        String sql = "INSERT INTO LvhGiaSu (LvhHoTen, LvhNgaySinh, LvhGioiTinh, LvhSoDienThoai, LvhEmail, LvhDiaChi, LvhTrinhDo, LvhAnh, LvhMucLuong, LvhMatKhau, LvhTrangThai) "
+                   + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
         return jdbcTemplate.update(sql,
                 giasu.getLvhHoTen(),
                 giasu.getLvhNgaySinh(),
@@ -49,17 +62,21 @@ public class LVH_GiasuDAO {
                 giasu.getLvhEmail(),
                 giasu.getLvhDiaChi(),
                 giasu.getLvhTrinhDo(),
-                giasu.getLvhAnh(),
+                giasu.getLvhAnh(),  // Nếu không có ảnh thì truyền giá trị NULL
                 giasu.getLvhMucLuong(),
                 giasu.getLvhMatKhau(),
-                giasu.getLvhTrangThai());
+                trangThai);
     }
 
     // Cập nhật gia sư
     public int updateGiasu(LVH_Giasu giasu) {
         if (giasu.getLvhMaGiaSu() == null) {
-            return 0; // Nếu ID null thì không update
+            return 0;  // Nếu không có ID thì không cập nhật
         }
+
+        // Chuyển đổi trạng thái thành 0 (Inactive) hoặc 1 (Active)
+        int trangThai = giasu.getLvhTrangThai() ? 1 : 0;
+
         String sql = "UPDATE LvhGiaSu SET LvhHoTen=?, LvhNgaySinh=?, LvhGioiTinh=?, LvhSoDienThoai=?, LvhEmail=?, LvhDiaChi=?, LvhTrinhDo=?, LvhAnh=?, LvhMucLuong=?, LvhMatKhau=?, LvhTrangThai=? WHERE LvhMaGiaSu=?";
         return jdbcTemplate.update(sql,
                 giasu.getLvhHoTen(),
@@ -69,10 +86,10 @@ public class LVH_GiasuDAO {
                 giasu.getLvhEmail(),
                 giasu.getLvhDiaChi(),
                 giasu.getLvhTrinhDo(),
-                giasu.getLvhAnh(),
+                giasu.getLvhAnh(),  // Nếu không có ảnh thì truyền giá trị NULL
                 giasu.getLvhMucLuong(),
                 giasu.getLvhMatKhau(),
-                giasu.getLvhTrangThai(),
+                trangThai,
                 giasu.getLvhMaGiaSu());
     }
 

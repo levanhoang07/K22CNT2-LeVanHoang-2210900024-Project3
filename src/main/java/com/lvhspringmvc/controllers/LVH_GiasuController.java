@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/giasu")
 public class LVH_GiasuController {
 
     private final LVH_GiasuDAO giasuDAO;
@@ -21,51 +20,59 @@ public class LVH_GiasuController {
     }
 
     // Hiển thị danh sách gia sư
-    @GetMapping("/list")
+    @GetMapping("/giasu/lvh_giasu_list")
     public String showGiasuList(Model model) {
         List<LVH_Giasu> list = giasuDAO.getAllGiasu();
         model.addAttribute("list", list);
-        return "giasu_list"; // Trả về trang danh sách gia sư
+        return "giasu/lvh_giasu_list"; // Trả về trang danh sách gia sư
     }
 
-    // Hiển thị form thêm mới gia sư
-    @GetMapping("/add")
+    // Hiển thị form thêm gia sư
+    @GetMapping("/giasu/add")
     public String showAddForm(Model model) {
         model.addAttribute("giasu", new LVH_Giasu());
-        return "giasu_form"; // Trả về form thêm/sửa gia sư
+        return "giasu/lvh_giasu_add"; // Trả về form thêm gia sư
     }
 
     // Lưu thông tin gia sư mới
-    @PostMapping("/save")
-    public String saveGiasu(@ModelAttribute("giasu") LVH_Giasu giasu) {
+    @PostMapping("/giasu/save")
+    public String saveGiasu(@ModelAttribute("giasu") LVH_Giasu giasu, Model model) {
+        if (giasu.getLvhHoTen() == null || giasu.getLvhHoTen().isEmpty()) {
+            model.addAttribute("error", "Tên gia sư không thể để trống.");
+            return "giasu/lvh_giasu_add"; // Trả về form thêm gia sư nếu tên không hợp lệ
+        }
+        // Lưu gia sư vào cơ sở dữ liệu
         giasuDAO.insertGiasu(giasu);
-        return "redirect:/giasu/list";
+        return "redirect:/giasu/lvh_giasu_list"; // Sau khi thêm thành công, quay lại danh sách gia sư
     }
 
     // Hiển thị form chỉnh sửa gia sư
-    @GetMapping("/edit/{id}")
+    @GetMapping("/giasu/edit/{id}")
     public String showEditForm(@PathVariable("id") int id, Model model) {
         LVH_Giasu giasu = giasuDAO.getGiasuById(id);
         if (giasu == null) {
-            return "redirect:/giasu/list"; // Nếu không tìm thấy, quay lại danh sách
+            model.addAttribute("error", "Không tìm thấy gia sư với ID: " + id);
+            return "redirect:/giasu/lvh_giasu_list"; // Nếu không tìm thấy, quay lại danh sách
         }
         model.addAttribute("giasu", giasu);
-        return "giasu_form"; // Sử dụng lại cùng 1 form để sửa
+        return "giasu/lvh_giasu_edit"; // Trả về form chỉnh sửa gia sư
     }
 
     // Cập nhật thông tin gia sư
-    @PostMapping("/update")
-    public String updateGiasu(@ModelAttribute("giasu") LVH_Giasu giasu) {
-        if (giasu.getLvhMaGiaSu() != null) {
-            giasuDAO.updateGiasu(giasu);
+    @PostMapping("/giasu/update")
+    public String updateGiasu(@ModelAttribute("giasu") LVH_Giasu giasu, Model model) {
+        if (giasu.getLvhMaGiaSu() == null) {
+            model.addAttribute("error", "ID gia sư không hợp lệ.");
+            return "redirect:/giasu/lvh_giasu_list";
         }
-        return "redirect:/giasu/list";
+        giasuDAO.updateGiasu(giasu);
+        return "redirect:/giasu/lvh_giasu_list"; // Quay lại danh sách gia sư
     }
 
     // Xóa gia sư
-    @GetMapping("/delete/{id}")
+    @GetMapping("/giasu/delete/{id}")
     public String deleteGiasu(@PathVariable("id") int id) {
         giasuDAO.deleteGiasu(id);
-        return "redirect:/giasu/list";
+        return "redirect:/giasu/lvh_giasu_list"; // Sau khi xóa, quay lại danh sách
     }
 }

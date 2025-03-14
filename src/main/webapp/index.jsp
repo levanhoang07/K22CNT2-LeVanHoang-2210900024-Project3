@@ -140,7 +140,7 @@
             <a href="index.jsp">Trang chủ</a>
             <a href="dangnhap.jsp">Đăng nhập</a>
             <a href="dangky.jsp">Đăng ký</a>
-            <a href="qladmin.jsp">QLAdmin</a>
+            <a href="qladmin">QLAdmin</a>
         </nav>
     </header>
 
@@ -183,7 +183,7 @@
                 Khi trở thành gia sư tại Doremi, bạn sẽ được hưởng nhiều lợi ích tuyệt vời: linh hoạt về thời gian giảng dạy, mức thu nhập hấp dẫn dựa trên năng lực, cơ hội phát triển kỹ năng sư phạm, và sự hỗ trợ tận tình từ đội ngũ quản lý của trung tâm. Chúng tôi cung cấp các buổi đào tạo định kỳ để giúp bạn nâng cao kỹ năng giảng dạy, cách tiếp cận học sinh, và xây dựng bài giảng hiệu quả.
             </p>
             <p style="text-align: center;">
-                <a href="lvh_giasu_form.jsp" class="register-button">Đăng ký làm gia sư ngay</a>
+                <a href="/giasu/" class="register-button">Đăng ký làm gia sư ngay</a>
             </p>
         </div>
 

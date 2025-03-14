@@ -1,5 +1,6 @@
 package com.lvhspringmvc.model;
 
+
 public class LVH_Quantri {
     private int lvhMaQuanTri;
     private String lvhHoTen;
