@@ -23,6 +23,12 @@ public class LVH_ThanhtoanDAO {
         return jdbcTemplate.query(sql, new ThanhtoanMapper());
     }
 
+    // Lấy thông tin thanh toán theo ID
+    public LVH_Thanhtoan getThanhtoanById(int id) {
+        String sql = "SELECT * FROM LvhThanhtoan WHERE LvhMaThanhtoan = ?";
+        return jdbcTemplate.queryForObject(sql, new ThanhtoanMapper(), id);
+    }
+
     // Thêm mới thanh toán
     public int insertThanhtoan(LVH_Thanhtoan thanhtoan) {
         String sql = "INSERT INTO LvhThanhtoan (LvhMaHocVien, LvhMaGiaSu, LvhSoTien, LvhNgayThanhtoan, LvhLoaiThanhtoan) VALUES (?, ?, ?, ?, ?)";

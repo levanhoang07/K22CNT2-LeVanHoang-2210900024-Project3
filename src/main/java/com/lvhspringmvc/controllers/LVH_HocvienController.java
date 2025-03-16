@@ -6,66 +6,77 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @Controller
-@RequestMapping("/hocvien")
+
 public class LVH_HocvienController {
 
-    private final LVH_HocvienDAO hocvienDAO;
-
     @Autowired
-    public LVH_HocvienController(LVH_HocvienDAO hocvienDAO) {
-        this.hocvienDAO = hocvienDAO;
-    }
+    private LVH_HocvienDAO hocvienDAO;
 
     // Hiển thị danh sách học viên
-    @GetMapping("/list")
+    @RequestMapping("/hocvien/lvh_hocvien_list")
     public String showHocvienList(Model model) {
         List<LVH_Hocvien> list = hocvienDAO.getAllHocVien();
         model.addAttribute("list", list);
-        return "hocvien_list"; // Trả về trang danh sách học viên
+        return "hocvien/lvh_hocvien_list"; // Trả về trang danh sách học viên
     }
 
     // Hiển thị form thêm mới học viên
-    @GetMapping("/add")
+    @GetMapping("/hocvien/add")
     public String showAddForm(Model model) {
         model.addAttribute("hocvien", new LVH_Hocvien());
-        return "hocvien_form"; // Trả về form thêm/sửa học viên
+        return "hocvien/lvh_hocvien_add"; // Trả về form thêm mới học viên
     }
 
-    // Lưu thông tin học viên mới
-    @PostMapping("/save")
-    public String saveHocvien(@ModelAttribute("hocvien") LVH_Hocvien hocvien) {
-        hocvienDAO.insertHocVien(hocvien);
-        return "redirect:/hocvien/list";
+    // Xử lý lưu thông tin học viên (thêm mới)
+    @PostMapping("/hocvien/save")
+    public String saveHocvien(@ModelAttribute("hocvien") LVH_Hocvien hocvien, Model model) {
+        try {
+            if (hocvien != null) {
+                hocvienDAO.insertHocVien(hocvien);
+            }
+        } catch (IllegalArgumentException e) {
+            model.addAttribute("message", e.getMessage());
+            return "hocvien/lvh_hocvien_add"; // Quay lại form nếu có lỗi
+        }
+        return "redirect:/hocvien/lvh_hocvien_list";
     }
 
-    // Hiển thị form chỉnh sửa học viên
-    @GetMapping("/edit/{id}")
+    // Hiển thị form để sửa thông tin học viên
+    @GetMapping("/hocvien/edit/{id}")
     public String showEditForm(@PathVariable("id") int id, Model model) {
         LVH_Hocvien hocvien = hocvienDAO.getHocVienById(id);
         if (hocvien == null) {
-            return "redirect:/hocvien/list"; // Nếu không tìm thấy, quay lại danh sách
+            model.addAttribute("message", "Không tìm thấy học viên với ID: " + id);
+            return "redirect:/hocvien/lvh_hocvien_list";
         }
         model.addAttribute("hocvien", hocvien);
-        return "hocvien_form"; // Sử dụng lại cùng 1 form để sửa
+        return "hocvien/lvh_hocvien_edit";
     }
 
-    // Cập nhật thông tin học viên
-    @PostMapping("/update")
-    public String updateHocvien(@ModelAttribute("hocvien") LVH_Hocvien hocvien) {
-        if (hocvien.getLvhMaHocVien() != null) {
-            hocvienDAO.updateHocVien(hocvien);
+    // Xử lý cập nhật thông tin học viên
+    @PostMapping("/hocvien/update")
+    public String updateHocvien(@ModelAttribute("hocvien") LVH_Hocvien hocvien, Model model) {
+        try {
+            if (hocvien != null && hocvien.getLvhMaHocVien() != null) {
+                hocvienDAO.updateHocVien(hocvien);
+            }
+        } catch (IllegalArgumentException e) {
+            model.addAttribute("message", e.getMessage());
+            return "hocvien/lvh_hocvien_edit";
         }
-        return "redirect:/hocvien/list";
+        return "redirect:/hocvien/lvh_hocvien_list";
     }
 
-    // Xóa học viên
-    @GetMapping("/delete/{id}")
+    // Xử lý xóa học viên
+    @GetMapping("/hocvien/delete/{id}")
     public String deleteHocvien(@PathVariable("id") int id) {
-        hocvienDAO.deleteHocVien(id);
-        return "redirect:/hocvien/list";
+        LVH_Hocvien hocvien = hocvienDAO.getHocVienById(id);
+        if (hocvien != null) {
+            hocvienDAO.deleteHocVien(id);
+        }
+        return "redirect:/hocvien/lvh_hocvien_list";
     }
 }

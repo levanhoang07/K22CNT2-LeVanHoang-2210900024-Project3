@@ -19,18 +19,23 @@ public class LVH_DanhgiaDAO {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    // Getter cho jdbcTemplate
-    public JdbcTemplate getJdbcTemplate() {
-        return jdbcTemplate;
-    }
-
-    // Lấy danh sách đánh giá
+    // Lấy danh sách tất cả đánh giá
     public List<LVH_Danhgia> getAllDanhgia() {
         String sql = "SELECT * FROM LvhDanhGia";
         return jdbcTemplate.query(sql, new DanhgiaMapper());
     }
 
-    // Thêm mới đánh giá
+    // Lấy một đánh giá theo ID
+    public LVH_Danhgia getDanhgiaById(int id) {
+        String sql = "SELECT * FROM LvhDanhGia WHERE LvhMaDanhGia = ?";
+        try {
+            return jdbcTemplate.queryForObject(sql, new Object[]{id}, new DanhgiaMapper());
+        } catch (Exception e) {
+            return null; // Trả về null nếu không tìm thấy
+        }
+    }
+
+    // Thêm mới một đánh giá
     public int insertDanhgia(LVH_Danhgia danhgia) {
         String sql = "INSERT INTO LvhDanhGia (LvhHoTen, LvhSoDienThoai, LvhBinhLuan) VALUES (?, ?, ?)";
         return jdbcTemplate.update(sql,
@@ -55,7 +60,7 @@ public class LVH_DanhgiaDAO {
         return jdbcTemplate.update(sql, id);
     }
 
-    // RowMapper để ánh xạ dữ liệu từ database
+    // RowMapper để ánh xạ dữ liệu từ ResultSet vào đối tượng LVH_Danhgia
     private static class DanhgiaMapper implements RowMapper<LVH_Danhgia> {
         @Override
         public LVH_Danhgia mapRow(ResultSet rs, int rowNum) throws SQLException {
