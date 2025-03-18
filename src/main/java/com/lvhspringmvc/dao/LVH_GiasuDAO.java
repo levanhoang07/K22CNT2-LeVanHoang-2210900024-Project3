@@ -51,7 +51,7 @@ public class LVH_GiasuDAO {
         // Chuyển đổi trạng thái thành 0 (Inactive) hoặc 1 (Active)
         int trangThai = giasu.getLvhTrangThai() ? 1 : 0;
 
-        String sql = "INSERT INTO LvhGiaSu (LvhHoTen, LvhNgaySinh, LvhGioiTinh, LvhSoDienThoai, LvhEmail, LvhDiaChi, LvhTrinhDo, LvhAnh, LvhMucLuong, LvhMatKhau, LvhTrangThai) "
+        String sql = "INSERT INTO LvhGiaSu (LvhHoTen, LvhNgaySinh, LvhGioiTinh, LvhSoDienThoai,LvhMatKhau, LvhEmail, LvhDiaChi, LvhTrinhDo, LvhAnh, LvhMucLuong, LvhTrangThai) "
                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         return jdbcTemplate.update(sql,
@@ -59,12 +59,13 @@ public class LVH_GiasuDAO {
                 giasu.getLvhNgaySinh(),
                 giasu.getLvhGioiTinh(),
                 giasu.getLvhSoDienThoai(),
+                giasu.getLvhMatKhau(),
                 giasu.getLvhEmail(),
                 giasu.getLvhDiaChi(),
                 giasu.getLvhTrinhDo(),
-                giasu.getLvhAnh(),  // Nếu không có ảnh thì truyền giá trị NULL
+                giasu.getLvhAnh(), 
                 giasu.getLvhMucLuong(),
-                giasu.getLvhMatKhau(),
+               
                 trangThai);
     }
 
@@ -77,18 +78,19 @@ public class LVH_GiasuDAO {
         // Chuyển đổi trạng thái thành 0 (Inactive) hoặc 1 (Active)
         int trangThai = giasu.getLvhTrangThai() ? 1 : 0;
 
-        String sql = "UPDATE LvhGiaSu SET LvhHoTen=?, LvhNgaySinh=?, LvhGioiTinh=?, LvhSoDienThoai=?, LvhEmail=?, LvhDiaChi=?, LvhTrinhDo=?, LvhAnh=?, LvhMucLuong=?, LvhMatKhau=?, LvhTrangThai=? WHERE LvhMaGiaSu=?";
+        String sql = "UPDATE LvhGiaSu SET LvhHoTen=?, LvhNgaySinh=?, LvhGioiTinh=?, LvhSoDienThoai=?, LvhMatKhau=?, LvhEmail=?, LvhDiaChi=?, LvhTrinhDo=?, LvhAnh=?, LvhMucLuong=?, LvhTrangThai=? WHERE LvhMaGiaSu=?";
         return jdbcTemplate.update(sql,
                 giasu.getLvhHoTen(),
                 giasu.getLvhNgaySinh(),
                 giasu.getLvhGioiTinh(),
                 giasu.getLvhSoDienThoai(),
+                giasu.getLvhMatKhau(),
                 giasu.getLvhEmail(),
                 giasu.getLvhDiaChi(),
                 giasu.getLvhTrinhDo(),
-                giasu.getLvhAnh(),  // Nếu không có ảnh thì truyền giá trị NULL
+                giasu.getLvhAnh(),
                 giasu.getLvhMucLuong(),
-                giasu.getLvhMatKhau(),
+                
                 trangThai,
                 giasu.getLvhMaGiaSu());
     }
@@ -108,13 +110,12 @@ public class LVH_GiasuDAO {
             giasu.setLvhHoTen(rs.getString("LvhHoTen"));
             giasu.setLvhNgaySinh(rs.getDate("LvhNgaySinh"));
             giasu.setLvhGioiTinh(rs.getString("LvhGioiTinh"));
-            giasu.setLvhSoDienThoai(rs.getString("LvhSoDienThoai"));
+            giasu.setLvhSoDienThoai(rs.getString("LvhSoDienThoai"));  
             giasu.setLvhEmail(rs.getString("LvhEmail"));
             giasu.setLvhDiaChi(rs.getString("LvhDiaChi"));
             giasu.setLvhTrinhDo(rs.getString("LvhTrinhDo"));
             giasu.setLvhAnh(rs.getString("LvhAnh"));
             giasu.setLvhMucLuong(rs.getDouble("LvhMucLuong"));
-            giasu.setLvhMatKhau(rs.getString("LvhMatKhau"));
             giasu.setLvhTrangThai(rs.getBoolean("LvhTrangThai"));
             return giasu;
         }

@@ -64,14 +64,24 @@ public class LVH_QuantriController {
     public String updateQuanTri(@ModelAttribute("quanTri") LVH_Quantri quanTri, Model model) {
         try {
             if (quanTri != null && quanTri.getLvhMaQuanTri() > 0) {
+                // Lấy thông tin quản trị viên hiện tại từ DB
+                LVH_Quantri oldQuanTri = quantriDAO.getQuanTriById(quanTri.getLvhMaQuanTri());
+
+                // Nếu không nhập mật khẩu mới, giữ nguyên mật khẩu cũ
+                if (quanTri.getLvhMatKhau() == null || quanTri.getLvhMatKhau().isEmpty()) {
+                    quanTri.setLvhMatKhau(oldQuanTri.getLvhMatKhau());
+                }
+
                 quantriDAO.updateQuanTri(quanTri);
             }
         } catch (IllegalArgumentException e) {
             model.addAttribute("message", e.getMessage());
             return "quanli/lvh_quantri_edit"; // Quay lại form nếu có lỗi
         }
-        return "redirect:/quanli/lvh_quantri_list"; // Sau khi cập nhật thành công, chuyển đến danh sách
+        return "redirect:/quanli/lvh_quantri_list"; // Sau khi cập nhật thành công, quay lại danh sách
     }
+
+
 
     // Xử lý xóa quản trị viên
     @GetMapping("/quanli/delete/{id}")

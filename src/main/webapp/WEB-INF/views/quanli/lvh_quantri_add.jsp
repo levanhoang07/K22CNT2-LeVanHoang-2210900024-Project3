@@ -3,82 +3,66 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <head>
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: #f9f9f9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
+   <meta charset="UTF-8">
+   <style>
+       /* Định dạng tổng thể */
+       body {
+           font-family: Arial, sans-serif;
+           background-color: #f4f4f4;
+           margin: 0;
+           padding: 20px;
+       }
 
-        .form-container {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            width: 380px;
-            transition: transform 0.3s ease-in-out;
-        }
+       /* Tiêu đề */
+       h2 {
+           text-align: center;
+           color: #333;
+       }
 
-        .form-container:hover {
-            transform: translateY(-3px);
-        }
+       /* Form Container */
+       .form-container {
+           background-color: white;
+           padding: 20px;
+           border-radius: 8px;
+           box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+           max-width: 600px;
+           margin: 0 auto;
+       }
 
-        h2 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
+       /* Label */
+       label {
+           font-weight: bold;
+           display: block;
+           margin-bottom: 5px;
+           color: #333;
+       }
 
-        label {
-            display: block;
-            margin: 10px 0 5px;
-            font-weight: 600;
-            color: #444;
-        }
+       /* Input fields */
+       .input-field {
+           width: 100%;
+           padding: 10px;
+           margin: 10px 0 15px 0;
+           border: 1px solid #ccc;
+           border-radius: 5px;
+       }
 
-        .input-field {
-            width: 100%;
-            padding: 10px;
-            border: 2px solid #ddd;
-            border-radius: 6px;
-            font-size: 14px;
-            background-color: #f9f9f9;
-            transition: border-color 0.3s ease, background 0.3s ease;
-        }
+       /* Nút Thêm */
+       .submit-btn {
+           background-color: #6666FF;
+           color: white;
+           border: none;
+           padding: 10px 15px;
+           border-radius: 5px;
+           cursor: pointer;
+           font-size: 16px;
+           transition: background-color 0.3s ease;
+           width: 100%;
+       }
 
-        .input-field:focus {
-            border-color: #007bff;
-            background: white;
-            outline: none;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 12px;
-            background: #007bff;
-            border: none;
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background 0.3s ease, transform 0.2s ease;
-        }
-
-        .submit-btn:hover {
-            background: #0056b3;
-            transform: scale(1.02);
-        }
-
-        .submit-btn:active {
-            transform: scale(0.98);
-        }
-    </style>
+       .submit-btn:hover {
+           background-color: #5757E6;
+       }
+   </style>
 </head>
 
 <h2>Thêm Quản Trị Viên</h2>
@@ -89,4 +73,5 @@
     <label>Email: <form:input path="lvhEmail" class="input-field" /></label>
     <label>Số Điện Thoại: <form:input path="lvhSoDienThoai" class="input-field" /></label>
     <button type="submit" class="submit-btn">Thêm</button>
+    <a href="${pageContext.request.contextPath}/quanli/lvh_quantri_list">Hủy</a>
 </form:form>

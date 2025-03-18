@@ -3,35 +3,106 @@
 <html>
 <head>
     <title>Chỉnh sửa lớp học</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+            padding: 0;
+        }
+
+        /* Header styling */
+        h2 {
+            text-align: center;
+            color: #6666FF;  /* Color for the title */
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* Form styling */
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin: 10px 0 5px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #6666FF;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #5757E6;
+        }
+
+        /* Link styling */
+        a {
+            display: inline-block;
+            text-align: center;
+            background-color: #6c757d;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            width: fit-content;
+            margin: 20px auto;
+        }
+
+        a:hover {
+            background-color: #5a6268;
+        }
+    </style>
 </head>
 <body>
+
     <h2>Chỉnh sửa lớp học</h2>
-    
+
     <form action="${pageContext.request.contextPath}/lophoc/update" method="post">
         <input type="hidden" name="lvhMaLop" value="${lopHoc.lvhMaLop}">
 
         <label>Tên Lớp:</label>
-        <input type="text" name="lvhTenLop" value="${lopHoc.lvhTenLop}" required><br>
+        <input type="text" name="lvhTenLop" value="${lopHoc.lvhTenLop}" required>
 
         <label>Môn Học:</label>
-        <input type="text" name="lvhMonHoc" value="${lopHoc.lvhMonHoc}" required><br>
+        <input type="text" name="lvhMonHoc" value="${lopHoc.lvhMonHoc}" required>
 
         <label>Mã Gia Sư:</label>
-        <input type="number" name="lvhMaGiaSu" value="${lopHoc.lvhMaGiaSu}" required><br>
+        <input type="number" name="lvhMaGiaSu" value="${lopHoc.lvhMaGiaSu}" required>
 
         <label>Mã Học Viên:</label>
-        <input type="number" name="lvhMaHocVien" value="${lopHoc.lvhMaHocVien}" required><br>
+        <input type="number" name="lvhMaHocVien" value="${lopHoc.lvhMaHocVien}" required>
 
         <label>Thời Gian Học:</label>
-        <input type="text" name="lvhThoiGianHoc" value="${lopHoc.lvhThoiGianHoc}" required><br>
+        <input type="text" name="lvhThoiGianHoc" value="${lopHoc.lvhThoiGianHoc}" required>
 
         <label>Địa Điểm Học:</label>
-        <input type="text" name="lvhDiaDiemHoc" value="${lopHoc.lvhDiaDiemHoc}" required><br>
+        <input type="text" name="lvhDiaDiemHoc" value="${lopHoc.lvhDiaDiemHoc}" required>
 
         <input type="submit" value="Cập nhật">
     </form>
 
-    <br>
     <a href="${pageContext.request.contextPath}/lophoc/lvh_lophoc_list">Quay lại danh sách</a>
+
 </body>
 </html>
