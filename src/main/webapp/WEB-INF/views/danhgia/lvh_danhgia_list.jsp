@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>Danh sách Đánh giá</title>
+    
     <style>
         /* General body styling */
         body {
@@ -88,7 +89,7 @@
             background-color: #5a6268;
         }
     </style>
-</head>
+</head><meta charset="UTF-8">
 <body>
 
     <h2>Danh sách Đánh giá</h2>

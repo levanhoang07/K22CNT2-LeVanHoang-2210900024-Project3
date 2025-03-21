@@ -167,8 +167,8 @@ tbody tr:hover {
                 <td>${quanTri.lvhEmail}</td>
                 <td>${quanTri.lvhSoDienThoai}</td>
                 <td>
-                    <a href="${pageContext.request.contextPath}/quanli/add" class="btn btn-primary">Thêm</a>|
-                    <a href="${pageContext.request.contextPath}/quanli/edit/${quanTri.lvhMaQuanTri}" class="btn edit-btn">Sửa</a>|
+                    <a href="${pageContext.request.contextPath}/quanli/add" class="btn btn-primary">Thêm</a>
+                    <a href="${pageContext.request.contextPath}/quanli/edit/${quanTri.lvhMaQuanTri}" class="btn edit-btn">  Sửa</a>
                     <a href="${pageContext.request.contextPath}/quanli/delete/${quanTri.lvhMaQuanTri}" class="btn delete-btn" onclick="return confirm('Bạn chắc chắn muốn xóa?')">Xóa</a>
                 </td>
             </tr>

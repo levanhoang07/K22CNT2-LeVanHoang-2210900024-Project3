@@ -61,18 +61,19 @@
 <body>
     <div class="sidebar">
         <div class="header">
-            <a href="index.jsp" class="home-button">↩</a><h2>Quản Lý</h2>
+            <a href="index.jsp" class="home-button">⬅</a><h2>📋 Quản Lý</h2>
         </div>
-        <a href="${pageContext.request.contextPath}/quanli/lvh_quantri_list">Quản Trị</a>
-        <a href="${pageContext.request.contextPath}/giasu/lvh_giasu_list">Gia sư</a>
-        <a href="${pageContext.request.contextPath}/hocvien/lvh_hocvien_list">Học viên</a>
-        <a href="${pageContext.request.contextPath}/lophoc/lvh_lophoc_list">Lớp học</a>
-        <a href="${pageContext.request.contextPath}/thanhtoan/lvh_thanhtoan_list">Thanh toán</a>
-        <a href="${pageContext.request.contextPath}/danhgia/lvh_danhgia_list">Đánh giá</a>
+	        <a href="${pageContext.request.contextPath}/quanli/lvh_quantri_list">🛡️ Quản Trị</a>
+			<a href="${pageContext.request.contextPath}/giasu/lvh_giasu_list">🎓 Gia sư</a>
+			<a href="${pageContext.request.contextPath}/hocvien/lvh_hocvien_list">👨‍🎓 Học viên</a>
+			<a href="${pageContext.request.contextPath}/lophoc/lvh_lophoc_list">🏫 Lớp học</a>
+			<a href="${pageContext.request.contextPath}/thanhtoan/lvh_thanhtoan_list">💰 Thanh toán</a>
+			<a href="${pageContext.request.contextPath}/danhgia/lvh_danhgia_list">⭐ Đánh giá</a>
+
     </div>
     <div class="content">
         <a href="#" class="main-message">
-            🌟 Chào mừng bạn đến với trang quản lý. Chúc bạn một ngày làm việc hiệu quả và thành công! 🚀
+            🌟 Chào mừng bạn đến với trang quản lý. Chúc bạn một ngày làm việc hiệu quả và thành công😊 🚀 !
         </a>
     </div>
 </body>

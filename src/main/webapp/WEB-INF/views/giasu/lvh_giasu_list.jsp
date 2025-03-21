@@ -189,10 +189,14 @@
                     </c:choose>
                 </td>
                 <td>${giasu.lvhMucLuong} VNĐ</td>
-                <td>${giasu.lvhTrangThai}</td>
+                <td>
+			    ${hocvien.lvhTrangThai 
+			        ? '<span style="color: green;">🟢 Hoạt động</span>' 
+			        : '<span style="color: red;">🔴 Ngừng hoạt động</span>'}
+				</td>
                 <td class="action-links">
-                    <a href="${pageContext.request.contextPath}/giasu/add" class="btn btn-add">Thêm</a>|
-                    <a href="${pageContext.request.contextPath}/giasu/edit/${giasu.lvhMaGiaSu}" class="btn btn-edit">Sửa</a>|
+                    <a href="${pageContext.request.contextPath}/giasu/add" class="btn btn-add">Thêm</a>
+                    <a href="${pageContext.request.contextPath}/giasu/edit/${giasu.lvhMaGiaSu}" class="btn btn-edit">Sửa</a>
                     <a href="${pageContext.request.contextPath}/giasu/delete/${giasu.lvhMaGiaSu}" class="btn btn-delete" onclick="return confirm('Bạn chắc chắn muốn xóa?')">Xóa</a>
                 </td>
             </tr>

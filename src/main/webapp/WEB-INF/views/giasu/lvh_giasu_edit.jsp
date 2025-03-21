@@ -141,8 +141,8 @@
             <td>Trạng Thái:</td>
             <td>
                 <form:select path="lvhTrangThai" value="${giasu.lvhTrangThai}">
-                    <form:option value="true">Active</form:option>
-                    <form:option value="false">Inactive</form:option>
+                    <form:option value="true">Hoạt động</form:option>
+                    <form:option value="false">Không hoạt động</form:option>
                 </form:select>
             </td>
         </tr>

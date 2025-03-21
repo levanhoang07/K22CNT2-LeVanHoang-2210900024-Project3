@@ -135,6 +135,15 @@
         .btn-back:hover {
             background-color: #5a6268;
         }
+       .nen-herder {
+    background-color: #6666FF !important;
+    color:white;
+}
+
+.nen-herder:hover {
+    background-color: #6666FF !important;
+}
+
     </style>
 </head>
 <body>
@@ -142,7 +151,7 @@
 <h2>Danh sách Học viên</h2>
 
 <table>
-    <tr>
+    <tr class="nen-herder">
         <th>ID</th>
         <th>Họ Tên</th>
         <th>Ngày Sinh</th>
@@ -153,7 +162,7 @@
         <th>Địa Chỉ</th>
         <th>Lớp Muốn Học</th>
         <th>Trạng Thái</th>
-        <th>Hành động</th>
+        <th>Thao Tác</th>
     </tr>
 
     <c:forEach var="hocvien" items="${list}">
@@ -172,18 +181,24 @@
             <td>${hocvien.lvhEmail}</td>
             <td>${hocvien.lvhDiaChi}</td>
             <td>${hocvien.lvhLopMuonHoc}</td>
-            <td>${hocvien.lvhTrangThai ? "Hoạt động" : "Ngừng hoạt động"}</td>
+	        <td>
+			    ${hocvien.lvhTrangThai 
+			        ? '<span style="color: green;">🟢 Hoạt động</span>' 
+			        : '<span style="color: red;">🔴 Ngừng hoạt động</span>'}
+			</td>
+
             <td>
-                <a href="${pageContext.request.contextPath}/hocvien/add" class="btn btn-primary">Thêm</a> |
-                <a href="${pageContext.request.contextPath}/hocvien/edit/${hocvien.lvhMaHocVien}" class="btn edit-btn">Sửa</a> |
+                <a href="${pageContext.request.contextPath}/hocvien/add" class="btn btn-primary">Thêm</a> 
+                <a href="${pageContext.request.contextPath}/hocvien/edit/${hocvien.lvhMaHocVien}" class="btn edit-btn">Sửa</a> 
                 <a href="${pageContext.request.contextPath}/hocvien/delete/${hocvien.lvhMaHocVien}" 
-                   class="btn delete-btn" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</a>
+                   class="btn delete-btn" onclick="return confirm('Bạn có chắc chắn muốn xóa?');"> Xóa</a>
             </td>
         </tr>
     </c:forEach>
 </table>
 
 <a href="/K22CNT2-LVH-2210900024-Project3/qladmin" class="btn-back">Trở về menu quản trị</a>
+
 
 </body>
 </html>

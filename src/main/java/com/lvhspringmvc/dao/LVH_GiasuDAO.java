@@ -78,7 +78,7 @@ public class LVH_GiasuDAO {
         // Chuyển đổi trạng thái thành 0 (Inactive) hoặc 1 (Active)
         int trangThai = giasu.getLvhTrangThai() ? 1 : 0;
 
-        String sql = "UPDATE LvhGiaSu SET LvhHoTen=?, LvhNgaySinh=?, LvhGioiTinh=?, LvhSoDienThoai=?, LvhMatKhau=?, LvhEmail=?, LvhDiaChi=?, LvhTrinhDo=?, LvhAnh=?, LvhMucLuong=?, LvhTrangThai=? WHERE LvhMaGiaSu=?";
+        String sql = "UPDATE LvhGiaSu SET LvhHoTen=?, LvhNgaySinh=?, LvhGioiTinh=?, LvhSoDienThoai=?, lvhMatKhau=?, LvhEmail=?, LvhDiaChi=?, LvhTrinhDo=?, LvhAnh=?, LvhMucLuong=?, LvhTrangThai=? WHERE LvhMaGiaSu=?";
         return jdbcTemplate.update(sql,
                 giasu.getLvhHoTen(),
                 giasu.getLvhNgaySinh(),
